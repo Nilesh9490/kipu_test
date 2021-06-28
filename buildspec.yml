@@ -10,11 +10,8 @@ phases:
       - echo Pre_build Phase
       - yarn install
       - yarn build
-      -  aws s3 sync dist/* s3://testdeploymentvue
-      - echo Build completed on `date`
+      - pwd
 
 artifacts:
-  files:
-    - '/'
-  discard-paths: yes
-  base-directory: 'dist*'
+  paths:
+      - dist/
