@@ -10,8 +10,7 @@ phases:
       - echo Pre_build Phase
       - yarn install
       - yarn build
-      - cd dist
-      -  aws s3 sync s3://testdeploymentvue --recursive
+      -  aws s3 dist/* sync  s3://testdeploymentvue --recursive
       - echo Build completed on `date`
 
 artifacts:
