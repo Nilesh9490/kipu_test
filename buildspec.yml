@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      # Update libs
+      - apt-get update
+  build:
+    commands:
+      - echo Pre_build Phase
+      - yarn install
+      - yarn build
+  post_build:
+    commands:
+      - aws s3 sync ./dist/* s3://kipu.veersatech.com --acl 'public-read' --delete
+
+artifacts:
+  files:
+    - '**/*.html'
+    - '**/*.js'
+    - '**/*.css'
+    - '**/*.ico'
+  discard-paths: yes
+  base-directory: 'dist'
