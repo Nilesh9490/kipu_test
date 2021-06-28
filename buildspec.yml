@@ -12,7 +12,7 @@ phases:
       - yarn build
   post_build:
     commands:
-      - aws s3 sync ./dist/* s3://kipu.veersatech.com --recursive
+      - aws s3 sync ./dist/* s3://testdeploymentvue --recursive
       - echo Build completed on `date`
 
 artifacts:
