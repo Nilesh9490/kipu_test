@@ -12,13 +12,11 @@ phases:
       - yarn build
   post_build:
     commands:
-      - aws s3 sync ./dist/* s3://kipu.veersatech.com --acl 'public-read' --delete
+      - aws s3 sync ./dist/* s3://kipu.veersatech.com --recursive
+      - echo Build completed on `date`
 
 artifacts:
   files:
-    - '**/*.html'
-    - '**/*.js'
-    - '**/*.css'
-    - '**/*.ico'
+    - '/'
   discard-paths: yes
-  base-directory: 'dist'
+  base-directory: 'dist*'
